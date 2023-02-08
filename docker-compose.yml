@@ -1,0 +1,16 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./dump:/docker-entrypoint-initdb.d
+    restart: always
+    ports:
+      - 5441:5432
+    environment:
+      - "POSTGRES_USER=root"
+      - "POSTGRES_PASSWORD=test"
+      - "POSTGRES_DB=bia"
+volumes:
+  pg-data:
